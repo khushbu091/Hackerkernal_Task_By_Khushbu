@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav style="width: 100%; display:flex; background-color: black; color: white;justify-content: space-between; ">
+        <ul style="display: flex; text-decoration:none; justify-content: space-between; ">
+            <li style="margin-left: 50px; text-decoration: none; color: white;"><a href="{% url 'add_user'%}" style="color: white;">User</a></li>
+            <li style="margin-left: 50px; text-decoration: none; color: white;"><a href="{% url 'add_task'%}" style="color: white;">Task</a></li>
+            <li style="margin-left: 50px; text-decoration: none; color: white;"><a href="{% url 'user_list'%}" style="color: white;">User List</a></li>
+            <li style="margin-left: 50px; text-decoration: none; color: white;"><a href="{% url 'task_list'%}" style="color: white;">Task List</a></li>
+        </ul>
+    </nav>
+    {% block extra_head %}
+    {% endblock %}
+    
+</body>
+</html>

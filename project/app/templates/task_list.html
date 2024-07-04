@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    {% block extra_head %}
+    <h2>Task List</h2>
+    <div style="position: absolute; top:30px; right:70px; width: 180px; height: 35px; background-color: rgb(34, 33, 33); margin-top: 100px;">
+        <a href="{% url 'export_to_excel' %}" style="text-decoration: none; color: white; text-align: center ; margin-top: 25px; margin-left: 5px;">convert excel sheet</a>
+    </div>
+    <ul>
+        {% for task in taskdata %}
+        <li>{{ task.Task_details }} - {{ task.Task_type }} - {{ task.User }}</li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
